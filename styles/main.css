@@ -26,7 +26,15 @@ footer {
 	position: fixed;
 	bottom: 0px;
 	padding: 0.5px;
-	width: 860px;
-	background: rgb(233,50,117);
-	
+	width: 335px;
+	background: rgba(0, 0, 0, 0.4);
+}
+/* Medium and small screens (640px) */
+@media (min-width: 640px) {
+	html {font-size: 112%;}
+
+}
+
+@media (min-width: 1024px) {
+	html {font-size: 120%;}
 }

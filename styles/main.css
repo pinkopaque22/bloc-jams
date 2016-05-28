@@ -22,10 +22,12 @@ html {
 	 left: 2rem;	
 }
 footer {
+  clear: both;
 	position: fixed;
 	bottom: 0px;
 	padding: 0.5px;
 	width: 335px;
+	overflow: hidden;
 	background: rgba(0, 0, 0, 0.4);
 }
 .container {
@@ -51,4 +53,12 @@ footer {
 
 @media (min-width: 1024px) {
 	html {font-size: 120%;}
+}
+.clearfix::before,
+.clearfix::after {
+	content: " ";
+	display: table;
+}
+.clearfix::after {
+	clear: both;
 }

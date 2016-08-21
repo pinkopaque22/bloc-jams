@@ -59,7 +59,7 @@ var setCurrentAlbum = function(album) {
 };
 var songListContainer = document.getElementsByClassName('album-view-song-list') [0];
 
-var playButtonTemplate = '<a class="album-song-button"><span class="ion-pizza"></span></a>'
+var playButtonTemplate = '<a class="album-song-button"><span class="ion-heart"></span></a>'
 
 
 window.onload = function() {
@@ -67,7 +67,7 @@ window.onload = function() {
 
 	songListContainer.addEventListener('mouseover', function(event) {
 		  if(event.target.parentElement.className === 'album-view-song-item') {
-				event.target.parentElement.querySelector('.song-item-numner').innerHTML = playButtonTemplate;
+				 event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
 			}
 		
 	});

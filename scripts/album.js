@@ -65,7 +65,12 @@ var playButtonTemplate = '<a class="album-song-button"><span class="ion-heart"><
 
 window.onload = function() {
 	setCurrentAlbum(albumPicasso);
-
+  
+	document.querySelector('.song-item-number').findParentByClassName.addEventListener('mouseover',function(event) {
+		
+	}, false);
+	
+	
 	songListContainer.addEventListener('mouseover', function(event) {
 		  if(event.target.parentElement.className === 'album-view-song-item') {
 				 event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;

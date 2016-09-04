@@ -118,7 +118,7 @@ var currentlyPlayingSong = null;
 
 
 window.onload = function() {
-<<<<<<< HEAD
+
 	setCurrentAlbum(albumPicasso);
   
 	
@@ -127,10 +127,10 @@ window.onload = function() {
 		  if(event.target.parentElement.className === 'album-view-song-item') {
 				 event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
 			
-=======
-setCurrentAlbum(albumPicasso);
 
-songListContainer.addEventListener('mouseover', function(event) {
+  setCurrentAlbum(albumPicasso);
+ 
+  songListContainer.addEventListener('mouseover', function(event) {
 		  if (event.target.parentElement.className === 'album-view-song-item') {
 				 	     event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
 						   var songItem = getSongItem(event.target);
@@ -138,9 +138,13 @@ songListContainer.addEventListener('mouseover', function(event) {
                if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
                    songItem.innerHTML = playButtonTemplate;
               }		
->>>>>>> 27-checkpoint/play_pause
+
 			}
 });
+			}
+	});
+																		 
+																		 }
 	
 	for (var i = 0; i < songRows.length; i++) {
 		  songRows[i].addEventListener('mouseleave', function(event) {
@@ -152,13 +156,17 @@ songListContainer.addEventListener('mouseover', function(event) {
 					  songItem.innerHTML = songItemNumber;
 				}
 	});
-			
+
 	songRows[i].addEventListener('click', function(event) {
              
           clickHandler(event.target);
       });
+				
 	}
-}
+
+																		 
+	
+
 	
 	
 	

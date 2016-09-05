@@ -63,11 +63,19 @@ var findParentByClassName = function(element, targetClass) {
 		var currentParent = element.parentElement;
 		while (currentParent.className != targetClass && currentParent.className !== null) {
 			currentParent = currentParent.parentElement;
+			//check to see if a parent exists. if not alert.
+			if(!currentParent) {
+				alert('No Parent Found');
+			}
+			//if the current el is as far up the tree as possible there will be no class.
+			if(currentParent === document.documentElement) {
+				alert('No Parent Found With This Class Name');
+			}
 		}
 		return currentParent;
 	}
 };
-debugger
+
 var getSongItem = function(element) {
     switch (element.className) {
         case 'album-song-button':
@@ -118,16 +126,7 @@ var currentlyPlayingSong = null;
 
 
 window.onload = function() {
-<<<<<<< HEAD
-	setCurrentAlbum(albumPicasso);
-  
-	
-	
-	songListContainer.addEventListener('mouseover', function(event) {
-		  if(event.target.parentElement.className === 'album-view-song-item') {
-				 event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
-			
-=======
+
 setCurrentAlbum(albumPicasso);
 
 songListContainer.addEventListener('mouseover', function(event) {
@@ -138,7 +137,6 @@ songListContainer.addEventListener('mouseover', function(event) {
                if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
                    songItem.innerHTML = playButtonTemplate;
               }		
->>>>>>> 27-checkpoint/play_pause
 			}
 });
 	

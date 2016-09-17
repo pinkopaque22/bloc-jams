@@ -38,17 +38,19 @@ var createSongRow = function(songNumber, songName, songLength) {
 	var $row = $(template);
 };
 	var clickHandler = function() {
-		      var songNumber = $(this).attr('data-song-number');
+					var songNumber = $(this).attr('data-song-number');
 
-	if (currentlyPlayingSong !== null) {
-		var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSong + '"]');
-		currentlyPlayingCell.html(currentlyPlayingSong);
-	}
-	if (currentlyPlayingSong !== songNumber) {		$(this).html(pauseButtonTemplate);
-		currentlyPlayingSong = songNumber;
-	} else if (currentlyPlayingSong === songNumber) {	$(this).html(playButtonTemplate);
-		currentlyPlayingSong = null;
-	}
+					if (currentlyPlayingSong !== null) {
+									var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSong + '"]');
+									currentlyPlayingCell.html(currentlyPlayingSong);
+					}
+					if (currentlyPlayingSong !== songNumber) {
+								$(this).html(pauseButtonTemplate);
+								currentlyPlayingSong = songNumber;
+					} else if (currentlyPlayingSong === songNumber) {
+								$(this).html(playButtonTemplate);
+								currentlyPlayingSong = null;
+					}
 };
 var onHover = function(event) {
 		var songNumberCell = $(this).find('.song-item-number');
@@ -64,13 +66,15 @@ var offHover = function(event) {
 
     if (songNumber !== currentlyPlayingSong) {
             songNumberCell.html(songNumber);
-        }		
+        }	
 	
-		
 	$row.find('.song-item-number').click(clickHandler);
 	$row.hover(onHover, offHover);
 	return $row;
+
 };
+
+	
 var setCurrentAlbum = function(album) {
 	var $albumTitle = $('.album-view-title');
 	var $albumArtist = $('.album-view-artist');
@@ -100,7 +104,6 @@ var currentlyPlayingSong = null;
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
-	  
 });
 
 																		 

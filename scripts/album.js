@@ -11,6 +11,10 @@ var createSongRow = function(songNumber, songName, songLength) {
 	var setSong = function(songNumber) {
 		currentlyPlayingSongNumber = parseInt(songNumber);
 		currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+		currentSoundFile = new.buzz.sound(currentSongFromAlbum.audioUrl, {
+			formats: ['mp3'],
+			preload: true
+		});
 	};
 	var getSongNumberCell = function(number) {
 		return $('.song-item-number[data-song-number="' + number + '"]');
@@ -170,6 +174,7 @@ var playerBarPauseButton = '<span class="ion-pause"></span>';
 var currentAlbum = null;
 var currentlyPlayingSongNumber = null;
 var currentSongFromAlbum = null;
+var currentSoundFile - null;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');

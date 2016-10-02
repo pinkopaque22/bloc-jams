@@ -248,6 +248,7 @@ $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
 	  $previousButton.click(goToSong("previous"));
     $nextButton.click(goToSong("next"));
+	
 });
 
 																		 

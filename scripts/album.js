@@ -33,7 +33,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 	'<tr class="album-view-song-item">'
 	+'  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
 	+'  <td class="song-item-title">' + songName + '</td>'
-	+'  <td class="song-item-duration">' + songLength + '</td>'
+	+'  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
 	+'</tr>';
 	var $row = $(template);
 	
@@ -121,8 +121,10 @@ var updateSeekBarWhileSongPlays = function() {
              var $seekBar = $('.seek-control .seek-bar');
              updateSeekPercentage($seekBar, seekBarFillRatio);
          });
+			  setCurrentTimeInPlayerBar(currentSoundFile.getTime());
      }
  };
+
 var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
 	  var offsetXPercent = seekBarFillRatio * 100;
 	  offsetXPercent = Math.max(0, offsetXPercent);
@@ -225,10 +227,8 @@ var goToSong = function(direction) {
 		}
 	
 	  setSong(currentSongIndex + 1);
-	  currentSoundFile.play();
 		updateSeekBarWhileSongPlays();
 	  updatePlayerBarSong();
-    //currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
@@ -277,13 +277,25 @@ var goToSong = function(direction) {
 //    
 //};
 
+var filterTimeCode = function(timeInSeconds) {
+	var time = parseFloat(timeInSeconds) || 0;
+	var minutes = Math.floor(time / 60) || 0;
+	var seconds = ("0" + Math.floor(time % 60)).slice(-2);
+	return minutes + ":"  + seconds;
+};
+var setTotalTimeInPlayerBar = function(totalTime) {
+	$('.total-time').text(filterTimeCode(totalTime));
+};
+var setCurrentTimeInPlayerBar = function(currentTime){
+	$('.current-time').text(filterTimeCode(currentTime));
+		};
 var updatePlayerBarSong = function() {
 
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
-
 	  $('.main-controls .play-pause').html(playerBarPauseButton);
+		setTotalTimeInPlayerBar(currentAlbum.duration);
 };
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-heart"></span></a>'
@@ -296,7 +308,7 @@ var currentAlbum = null;
 var currentlyPlayingSongNumber = null;
 var currentSongFromAlbum = null;
 var currentSoundFile = null;
-var currentVolume = 80;
+var currentVolume = 5;
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
 

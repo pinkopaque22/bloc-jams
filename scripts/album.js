@@ -149,6 +149,7 @@ var setupSeekBars = function() {
 				 }
          updateSeekPercentage($(this), seekBarFillRatio);
      });
+};
 		$seekBars.find('.thumb').mousedown(function(event) {
 				 var $seekBar = $(this).parent();
 		$(document).bind('mousemove.thumb', function(event){
@@ -163,7 +164,7 @@ var setupSeekBars = function() {
 				 updateSeekPercentage($seekBar, seekBarFillRatio);
 		});
 
-		$(document).bind('mouseup.thumb', function() {
+	  $(document).bind('mouseup.thumb', function() {
 			 $(document).unbind('mousemove.thumb');
 			 $(document).unbind('mouseup.thumb');
 		});
